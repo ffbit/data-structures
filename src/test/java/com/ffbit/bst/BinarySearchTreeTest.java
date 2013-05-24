@@ -58,8 +58,40 @@ public class BinarySearchTreeTest {
         bst.add(3);
         bst.add(1);
 
+        assertThat(bst.size(), is(3));
         assertThat(bst.contains(1), is(true));
         assertThat(bst.contains(2), is(true));
         assertThat(bst.contains(3), is(true));
     }
+
+    @Test
+    public void itShouldNotRemoveNonExistElement() throws Exception {
+        bst.add(1);
+
+        assertThat(bst.remove(2), is(false));
+        assertThat(bst.size(), is(1));
+    }
+
+    @Test
+    public void itShouldRemoveElementFromFirstLeaf() throws Exception {
+        bst.add(2);
+        bst.add(1);
+        bst.add(3);
+
+        assertThat(bst.remove(1), is(true));
+        assertThat(bst.contains(1), is(false));
+        assertThat(bst.size(), is(2));
+    }
+
+    @Test
+    public void itShouldRemoveElementFromSecondLeaf() throws Exception {
+        bst.add(2);
+        bst.add(1);
+        bst.add(3);
+
+        assertThat(bst.remove(3), is(true));
+        assertThat(bst.contains(3), is(false));
+        assertThat(bst.size(), is(2));
+    }
+
 }

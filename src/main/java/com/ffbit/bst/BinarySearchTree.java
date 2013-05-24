@@ -81,6 +81,42 @@ public class BinarySearchTree<E extends Comparable<E>> {
         return true;
     }
 
+    public boolean remove(E e) {
+        Node<E> parent = root;
+        Node<E> child = parent;
+        boolean isLeft = false;
+
+        while (child != null) {
+            int comparison = e.compareTo(child.getValue());
+
+            if (comparison == 0) {
+                Node<E> substitute = child.getRight();
+
+                if (isLeft) {
+                    parent.setLeft(substitute);
+                } else {
+                    parent.setRight(substitute);
+                }
+
+                size--;
+
+                return true;
+            }
+
+            parent = child;
+
+            if (comparison < 0) {
+                child = child.getLeft();
+                isLeft = true;
+            } else {
+                child = child.getRight();
+                isLeft = false;
+            }
+        }
+
+        return false;
+    }
+
     public void clear() {
         size = 0;
     }
