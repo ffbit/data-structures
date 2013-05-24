@@ -63,7 +63,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
     }
 
     public boolean add(E e) {
-        if (add(new Node<E>(e))) {
+        if (add(new Node<E>(e), root)) {
             size++;
             return true;
         }
@@ -71,8 +71,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
         return false;
     }
 
-    private boolean add(Node<E> node) {
-        Node<E> parent = root;
+    private boolean add(Node<E> node, Node<E> parent) {
         Node<E> child = parent;
         boolean isLeft = false;
 
@@ -121,8 +120,16 @@ public class BinarySearchTree<E extends Comparable<E>> {
                     root = substitute;
 
                     if (parent.getLeft() != null) {
-                        return add(parent.getLeft());
+                        add(parent.getLeft(), root);
+
+                        return true;
                     }
+                }
+
+                Node<E> left = child.getLeft();
+
+                if (left != null) {
+                    add(left, substitute);
                 }
 
                 if (isLeft) {

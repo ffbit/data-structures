@@ -3,12 +3,9 @@ package com.ffbit.bst;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.HashSet;
-
 import static junit.framework.Assert.assertFalse;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
@@ -128,6 +125,12 @@ public class BinarySearchTreeTest {
         assertThat(bst.remove(5), is(true));
         assertThat(bst.contains(5), is(false));
         assertThat(bst.size(), is(5));
+
+        assertThat("it should contain 0 but doesn't", bst.contains(0), is(true));
+        assertThat("it should contain 2 but doesn't", bst.contains(2), is(true));
+        assertThat("it should contain 3 but doesn't", bst.contains(3), is(true));
+        assertThat("it should contain 4 but doesn't", bst.contains(4), is(true));
+        assertThat("it should contain 6 but doesn't", bst.contains(6), is(true));
     }
 
     @Test
