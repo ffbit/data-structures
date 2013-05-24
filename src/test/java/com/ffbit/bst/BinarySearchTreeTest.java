@@ -54,10 +54,12 @@ public class BinarySearchTreeTest {
 
     @Test
     public void itShouldContainElement() throws Exception {
-        bst.add(3);
         bst.add(2);
+        bst.add(3);
         bst.add(1);
 
         assertThat(bst.contains(1), is(true));
+        assertThat(bst.contains(2), is(true));
+        assertThat(bst.contains(3), is(true));
     }
 }
