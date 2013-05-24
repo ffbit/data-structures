@@ -3,20 +3,21 @@ package com.ffbit.bst;
 import org.junit.Before;
 import org.junit.Test;
 
-import static junit.framework.Assert.assertFalse;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-public class BinarySearchTreeTest {
+public abstract class AbstractBinarySearchTreeTest {
 
-    private BinarySearchTree<Integer> bst;
+    BinarySearchTree<Integer> bst;
 
     @Before
     public void setUp() throws Exception {
-        bst = new BinarySearchTreeImpl<Integer>();
+        bst = getBst();
     }
+
+    abstract BinarySearchTree<Integer> getBst();
 
     @Test
     public void itShouldBeEmptyWhenCreated() throws Exception {
@@ -42,7 +43,7 @@ public class BinarySearchTreeTest {
     @Test
     public void itShouldNotAddDuplicates() throws Exception {
         assertTrue(bst.add(1));
-        assertFalse(bst.add(1));
+        assertThat(bst.add(1), is(false));
         assertThat(bst.size(), is(1));
     }
 
@@ -132,19 +133,6 @@ public class BinarySearchTreeTest {
         assertThat("it should contain 3 but doesn't", bst.contains(3), is(true));
         assertThat("it should contain 4 but doesn't", bst.contains(4), is(true));
         assertThat("it should contain 6 but doesn't", bst.contains(6), is(true));
-    }
-
-    @Test
-    public void itShouldSupportNaturalOrdering() throws Exception {
-        bst.add(3);
-        bst.add(1);
-        bst.add(0);
-        bst.add(2);
-        bst.add(5);
-        bst.add(4);
-        bst.add(6);
-
-        assertThat(bst.toString(), containsString("[0, 1, 2, 3, 4, 5, 6]"));
     }
 
 }
