@@ -15,7 +15,7 @@ public class BinarySearchTreeTest {
 
     @Before
     public void setUp() throws Exception {
-        bst = new BinarySearchTree<Integer>();
+        bst = new BinarySearchTreeImpl<Integer>();
     }
 
     @Test
