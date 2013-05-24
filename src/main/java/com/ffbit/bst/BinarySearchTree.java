@@ -33,6 +33,24 @@ public class BinarySearchTree<E extends Comparable<E>> {
             this.right = right;
         }
 
+        @Override
+        public String toString() {
+            String output = "";
+            final String separator = ", ";
+
+            if (left != null) {
+                output += left + separator;
+            }
+
+            output += value;
+
+            if (right != null) {
+                output += separator + right;
+            }
+
+            return output;
+        }
+
     }
 
     public BinarySearchTree() {
@@ -72,6 +90,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
                 isLeft = true;
             } else {
                 child = parent.getRight();
+                isLeft = false;
             }
         }
 
@@ -149,6 +168,11 @@ public class BinarySearchTree<E extends Comparable<E>> {
         }
 
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return "BinarySearchTree [" + root + "]";
     }
 
 }
