@@ -44,4 +44,20 @@ public class BinarySearchTreeTest {
         assertThat(bst.size(), is(1));
     }
 
+    @Test
+    public void itShouldNotContainElement() throws Exception {
+        bst.add(1);
+        bst.add(0);
+
+        assertThat(bst.contains(2), is(false));
+    }
+
+    @Test
+    public void itShouldContainElement() throws Exception {
+        bst.add(3);
+        bst.add(2);
+        bst.add(1);
+
+        assertThat(bst.contains(1), is(true));
+    }
 }

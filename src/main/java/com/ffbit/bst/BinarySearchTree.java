@@ -33,13 +33,6 @@ public class BinarySearchTree<E extends Comparable<E>> {
             this.right = right;
         }
 
-        public boolean add(E e) {
-            if (value.compareTo(e) == 0) {
-                return false;
-            }
-
-            return true;
-        }
     }
 
     public BinarySearchTree() {
@@ -52,20 +45,62 @@ public class BinarySearchTree<E extends Comparable<E>> {
     }
 
     public boolean add(E e) {
-        if (size == 0) {
-            root = new Node<E>(e);
-            size++;
-            return true;
-        } else if (root.add(e)) {
-            size++;
-            return true;
+        Node<E> parent = root;
+        Node<E> child = parent;
+        boolean isLeft = false;
+
+        while (child != null) {
+            int comparison = e.compareTo(child.getValue());
+
+            if (comparison == 0) {
+                return false;
+            }
+
+            parent = child;
+
+            if (comparison < 0) {
+                child = parent.getLeft();
+                isLeft = true;
+            } else {
+                child = parent.getRight();
+            }
         }
 
-        return false;
+        child = new Node<E>(e);
+
+        if (size == 0) {
+            root = child;
+        } else if (isLeft) {
+            parent.setLeft(child);
+        } else {
+            parent.setRight(child);
+        }
+
+        size++;
+
+        return true;
     }
 
     public void clear() {
         size = 0;
+    }
+
+    public boolean contains(E e) {
+        Node<E> current = root;
+
+        while (current != null) {
+            int comparison = e.compareTo(current.getValue());
+
+            if (comparison == 0) {
+                return true;
+            } else if (comparison < 0) {
+                current = current.getLeft();
+            } else {
+                current = current.getRight();
+            }
+        }
+
+        return false;
     }
 
 }
