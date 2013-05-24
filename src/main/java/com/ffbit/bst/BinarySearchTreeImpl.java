@@ -180,11 +180,18 @@ public class BinarySearchTreeImpl<E extends Comparable<E>> implements BinarySear
     @Override
     public void clear() {
         size = 0;
+        root = null;
     }
 
     @Override
     public String toString() {
-        return "BinarySearchTree [" + root + "]";
+        String content = "";
+
+        if (root != null) {
+            content = root.toString();
+        }
+
+        return "BinarySearchTree [" + content + "]";
     }
 
 }

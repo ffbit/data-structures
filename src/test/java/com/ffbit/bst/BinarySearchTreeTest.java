@@ -36,6 +36,7 @@ public class BinarySearchTreeTest {
         bst.clear();
 
         assertThat(bst.size(), is(0));
+        assertThat(bst.toString(), containsString("[]"));
     }
 
     @Test
