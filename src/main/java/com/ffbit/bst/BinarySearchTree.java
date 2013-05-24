@@ -45,12 +45,21 @@ public class BinarySearchTree<E extends Comparable<E>> {
     }
 
     public boolean add(E e) {
+        if (add(new Node<E>(e))) {
+            size++;
+            return true;
+        }
+
+        return false;
+    }
+
+    private boolean add(Node<E> node) {
         Node<E> parent = root;
         Node<E> child = parent;
         boolean isLeft = false;
 
         while (child != null) {
-            int comparison = e.compareTo(child.getValue());
+            int comparison = node.getValue().compareTo(child.getValue());
 
             if (comparison == 0) {
                 return false;
@@ -66,17 +75,13 @@ public class BinarySearchTree<E extends Comparable<E>> {
             }
         }
 
-        child = new Node<E>(e);
-
         if (size == 0) {
-            root = child;
+            root = node;
         } else if (isLeft) {
-            parent.setLeft(child);
+            parent.setLeft(node);
         } else {
-            parent.setRight(child);
+            parent.setRight(node);
         }
-
-        size++;
 
         return true;
     }
@@ -90,15 +95,22 @@ public class BinarySearchTree<E extends Comparable<E>> {
             int comparison = e.compareTo(child.getValue());
 
             if (comparison == 0) {
+                size--;
                 Node<E> substitute = child.getRight();
+
+                if (child == root) {
+                    root = substitute;
+
+                    if (parent.getLeft() != null) {
+                        return add(parent.getLeft());
+                    }
+                }
 
                 if (isLeft) {
                     parent.setLeft(substitute);
                 } else {
                     parent.setRight(substitute);
                 }
-
-                size--;
 
                 return true;
             }

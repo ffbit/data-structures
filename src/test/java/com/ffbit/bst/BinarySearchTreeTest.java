@@ -94,4 +94,15 @@ public class BinarySearchTreeTest {
         assertThat(bst.size(), is(2));
     }
 
+    @Test
+    public void itShouldRemoveFromRoot() throws Exception {
+        bst.add(2);
+        bst.add(1);
+        bst.add(3);
+
+        assertThat(bst.remove(2), is(true));
+        assertThat(bst.contains(2), is(false));
+        assertThat(bst.size(), is(2));
+    }
+
 }
