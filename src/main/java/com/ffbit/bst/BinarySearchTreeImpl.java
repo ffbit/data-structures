@@ -135,12 +135,6 @@ public class BinarySearchTreeImpl<E extends Comparable<E>> implements BinarySear
 
                 if (child == root) {
                     root = substitute;
-
-                    if (parent.getLeft() != null) {
-                        add(parent.getLeft(), root);
-
-                        return true;
-                    }
                 }
 
                 Node<E> left = child.getLeft();
