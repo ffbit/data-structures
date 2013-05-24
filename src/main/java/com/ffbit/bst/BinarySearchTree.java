@@ -10,4 +10,9 @@ public class BinarySearchTree<E> {
     public void add(E e) {
         size++;
     }
+
+    public void clear() {
+        size = 0;
+    }
+
 }

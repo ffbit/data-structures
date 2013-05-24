@@ -27,4 +27,12 @@ public class BinarySearchTreeTest {
         assertThat(1, is(bst.size()));
     }
 
+    @Test
+    public void itShouldRemoveAllElements() throws Exception {
+        bst.add(1);
+        bst.clear();
+
+        assertThat(bst.size(), is(0));
+    }
+
 }
