@@ -13,4 +13,12 @@ public class BinarySearchTreeTest {
         assertThat(bst.size(), is(0));
     }
 
+    @Test
+    public void itShouldNotBeEmptyWhenElementAdded() throws Exception {
+        BinarySearchTree bst = new BinarySearchTree();
+        bst.add(1);
+
+        assertThat(1, is(bst.size()));
+    }
+
 }

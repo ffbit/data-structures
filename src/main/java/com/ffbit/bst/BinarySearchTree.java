@@ -1,9 +1,13 @@
 package com.ffbit.bst;
 
-public class BinarySearchTree {
+public class BinarySearchTree<E> {
+    private int size = 0;
 
     public int size() {
-        return 0;
+        return size;
     }
 
+    public void add(E e) {
+        size++;
+    }
 }
