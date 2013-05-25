@@ -38,4 +38,35 @@ public class SinglyLinkedListTest {
         assertThat(list.contains(1), is(false));
     }
 
+    @Test
+    public void itShouldRemoveElementFromTheEnd() throws Exception {
+        list.add(1);
+        list.add(2);
+
+        assertThat("it should remove 1", list.remove(1), is(true));
+        assertThat("1 should not be in the list", list.contains(1), is(false));
+        assertThat("size should be reduced to 1", list.size(), is(1));
+    }
+
+    @Test
+    public void itShouldRemoveElementFromTheMiddle() throws Exception {
+        list.add(1);
+        list.add(2);
+        list.add(3);
+
+        assertThat("it should remove 2", list.remove(2), is(true));
+        assertThat("2 should not be in the list", list.contains(2), is(false));
+        assertThat("size should be reduced to 2", list.size(), is(2));
+    }
+
+    @Test
+    public void itShouldRemoveElementFromTheHead() throws Exception {
+        list.add(1);
+        list.add(2);
+
+        assertThat("it should remove 2", list.remove(2), is(true));
+        assertThat("2 should not be in the list", list.contains(2), is(false));
+        assertThat("size should be reduced to 1", list.size(), is(1));
+    }
+
 }

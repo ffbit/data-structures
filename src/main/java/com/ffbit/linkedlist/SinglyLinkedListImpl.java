@@ -57,6 +57,33 @@ public class SinglyLinkedListImpl<E> implements SinglyLinkList<E> {
             if (current.isValueEqualTo(e)) {
                 return true;
             }
+
+            current = current.getNext();
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean remove(E e) {
+        Link<E> previous = head;
+        Link<E> current = previous;
+
+        while (current != null) {
+            if (current.isValueEqualTo(e)) {
+                if (current == head) {
+                    head = head.getNext();
+                } else {
+                    previous.setNext(current.getNext());
+                }
+
+                size--;
+
+                return true;
+            }
+
+            previous = current;
+            current = current.getNext();
         }
 
         return false;

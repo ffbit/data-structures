@@ -8,4 +8,6 @@ public interface SinglyLinkList<E> {
 
     boolean contains(E e);
 
+    boolean remove(E e);
+
 }
