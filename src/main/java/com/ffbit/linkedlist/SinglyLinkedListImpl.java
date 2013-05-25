@@ -19,10 +19,6 @@ public class SinglyLinkedListImpl<E> implements SinglyLinkList<E> {
             return value;
         }
 
-        public void setValue(E value) {
-            this.value = value;
-        }
-
         public Link<E> getNext() {
             return next;
         }

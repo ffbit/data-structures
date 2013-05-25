@@ -41,6 +41,11 @@ public class SinglyLinkedListTest {
     }
 
     @Test
+    public void itShouldHandleRemovingNonExistentElement() throws Exception {
+        assertThat(list.remove(1), is(false));
+    }
+
+    @Test
     public void itShouldRemoveElementFromTheEnd() throws Exception {
         list.add(1);
         list.add(2);
