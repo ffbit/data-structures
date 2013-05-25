@@ -8,26 +8,31 @@ public class SinglyLinkedListImpl<E> implements SinglyLinkList<E> {
         private E value;
         private Link<E> next;
 
-        private Link(E value, Link<E> next) {
+        public Link(E value, Link<E> next) {
             this.value = value;
             this.next = next;
         }
 
-        private E getValue() {
+        public E getValue() {
             return value;
         }
 
-        private void setValue(E value) {
+        public void setValue(E value) {
             this.value = value;
         }
 
-        private Link<E> getNext() {
+        public Link<E> getNext() {
             return next;
         }
 
-        private void setNext(Link<E> next) {
+        public void setNext(Link<E> next) {
             this.next = next;
         }
+
+        public boolean isValueEqualTo(E e) {
+            return value.equals(e);
+        }
+
     }
 
     public SinglyLinkedListImpl() {
@@ -49,7 +54,7 @@ public class SinglyLinkedListImpl<E> implements SinglyLinkList<E> {
         Link<E> current = head;
 
         while (current != null) {
-            if (current.getValue().equals(e)) {
+            if (current.isValueEqualTo(e)) {
                 return true;
             }
         }
