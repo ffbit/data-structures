@@ -4,6 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.emptyIterable;
 import static org.junit.Assert.assertThat;
 
 public class SinglyLinkedListTest {
@@ -67,6 +69,38 @@ public class SinglyLinkedListTest {
         assertThat("it should remove 2", list.remove(2), is(true));
         assertThat("2 should not be in the list", list.contains(2), is(false));
         assertThat("size should be reduced to 1", list.size(), is(1));
+    }
+
+    @Test
+    public void itShouldKeepAdditionOrder() throws Exception {
+        list.add(1);
+        list.add(2);
+        list.add(3);
+
+        assertThat(list, contains(3, 2, 1));
+    }
+
+    @Test
+    public void itShouldBeEmptyWhenAllElementsRemoved() throws Exception {
+        list.add(1);
+        list.add(2);
+
+        list.remove(1);
+        list.remove(2);
+
+        assertThat(list, is(emptyIterable()));
+    }
+
+    @Test
+    public void itShouldBeEmptyWhenCleared() throws Exception {
+        list.add(1);
+        list.add(2);
+
+        list.clear();
+
+        assertThat("it should not contain 1", list.contains(1), is(false));
+        assertThat("it should not contain 2", list.contains(2), is(false));
+        assertThat("it should be empty", list, is(emptyIterable()));
     }
 
 }

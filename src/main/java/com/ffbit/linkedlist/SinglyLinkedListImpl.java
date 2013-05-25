@@ -1,5 +1,7 @@
 package com.ffbit.linkedlist;
 
+import java.util.Iterator;
+
 public class SinglyLinkedListImpl<E> implements SinglyLinkList<E> {
     private int size;
     private Link<E> head;
@@ -87,6 +89,38 @@ public class SinglyLinkedListImpl<E> implements SinglyLinkList<E> {
         }
 
         return false;
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new Iterator<E>() {
+            private Link<E> head = SinglyLinkedListImpl.this.head;
+
+            @Override
+            public boolean hasNext() {
+                return head != null;
+            }
+
+            @Override
+            public E next() {
+                E value = head.getValue();
+                head = head.getNext();
+
+                return value;
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException("Not implemented.");
+            }
+
+        };
+    }
+
+    @Override
+    public void clear() {
+        size = 0;
+        head = null;
     }
 
 }

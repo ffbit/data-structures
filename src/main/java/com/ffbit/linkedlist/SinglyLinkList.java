@@ -1,6 +1,6 @@
 package com.ffbit.linkedlist;
 
-public interface SinglyLinkList<E> {
+public interface SinglyLinkList<E> extends Iterable<E> {
 
     int size();
 
@@ -9,5 +9,7 @@ public interface SinglyLinkList<E> {
     boolean contains(E e);
 
     boolean remove(E e);
+
+    void clear();
 
 }
