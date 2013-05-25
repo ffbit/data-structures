@@ -6,4 +6,6 @@ public interface SinglyLinkList<E> {
 
     void add(E e);
 
+    boolean contains(E e);
+
 }

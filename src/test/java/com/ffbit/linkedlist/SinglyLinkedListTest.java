@@ -26,4 +26,16 @@ public class SinglyLinkedListTest {
         assertThat(list.size(), is(1));
     }
 
+    @Test
+    public void itShouldContainAddedElement() throws Exception {
+        list.add(1);
+
+        assertThat(list.contains(1), is(true));
+    }
+
+    @Test
+    public void itShouldNotContainNonExistentElement() throws Exception {
+        assertThat(list.contains(1), is(false));
+    }
+
 }
