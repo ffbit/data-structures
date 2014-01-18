@@ -1,0 +1,34 @@
+package shad.stack;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
+public class ListStackTest {
+
+    private ListStack<Integer> stack;
+
+    @Before
+    public void setUp() throws Exception {
+        stack = new ListStack<Integer>();
+    }
+
+    @Test
+    public void itShouldPushAndPopElement() throws Exception {
+        stack.push(1);
+
+        assertThat(stack.pop(), is(1));
+    }
+
+    @Test
+    public void itShouldBeFistInputLastOutput() throws Exception {
+        stack.push(1);
+        stack.push(2);
+
+        assertThat(stack.pop(), is(2));
+        assertThat(stack.pop(), is(1));
+    }
+
+}
