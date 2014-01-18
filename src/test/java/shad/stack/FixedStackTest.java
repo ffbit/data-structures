@@ -14,4 +14,13 @@ public class FixedStackTest {
         assertThat(stack.capacity(), is(1));
     }
 
+    @Test
+    public void itShouldPushAndPopElement() throws Exception {
+        FixedStack<Integer> stack = new FixedStack<Integer>(1);
+
+        stack.push(2);
+
+        assertThat(stack.pop(), is(2));
+    }
+
 }
