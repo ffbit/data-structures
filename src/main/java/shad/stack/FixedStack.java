@@ -1,24 +1,23 @@
 package shad.stack;
 
 public class FixedStack<E> {
-    private final int capacity;
     private E[] holder;
+    int top;
 
     public FixedStack(int capacity) {
-        this.capacity = capacity;
         holder = (E[]) new Object[capacity];
     }
 
     public int capacity() {
-        return capacity;
+        return holder.length;
     }
 
     public void push(E element) {
-        holder[0] = element;
+        holder[top++] = element;
     }
 
     public E pop() {
-        return holder[0];
+        return holder[--top];
     }
 
 }
