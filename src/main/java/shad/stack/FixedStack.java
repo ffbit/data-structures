@@ -18,7 +18,7 @@ public class FixedStack<E> {
     }
 
     public void push(E element) {
-        if (top == holder.length) {
+        if (size() == holder.length) {
             throw new IllegalArgumentException("Attempt to push in full stack");
         }
 
@@ -26,7 +26,7 @@ public class FixedStack<E> {
     }
 
     public E pop() {
-        if (top == 0) {
+        if (size() == 0) {
             throw new IllegalArgumentException("Attempt to pop from empty stack");
         }
 
@@ -35,6 +35,14 @@ public class FixedStack<E> {
 
     public int size() {
         return top;
+    }
+
+    public E peek() {
+        if (size() == 0) {
+            throw new IllegalArgumentException("Attempt to peek from empty stack");
+        }
+
+        return holder[top - 1];
     }
 
 }

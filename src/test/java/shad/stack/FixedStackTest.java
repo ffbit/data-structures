@@ -25,6 +25,16 @@ public class FixedStackTest {
     }
 
     @Test
+    public void itShouldPushAndPeekElement() throws Exception {
+        FixedStack<Integer> stack = new FixedStack<Integer>(1);
+
+        stack.push(2);
+
+        assertThat(stack.peek(), is(2));
+        assertThat(stack.size(), is(1));
+    }
+
+    @Test
     public void itShouldBeFistInputLastOutput() throws Exception {
         FixedStack<Integer> stack = new FixedStack<Integer>(2);
 
@@ -66,6 +76,13 @@ public class FixedStackTest {
         FixedStack<Integer> stack = new FixedStack<Integer>(1);
 
         verifyException(stack, IllegalArgumentException.class).pop();
+    }
+
+    @Test
+    public void itShouldNotAllowPeekOnEmptyStack() throws Exception {
+        FixedStack<Integer> stack = new FixedStack<Integer>(1);
+
+        verifyException(stack, IllegalArgumentException.class).peek();
     }
 
     @Test
