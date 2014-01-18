@@ -3,6 +3,7 @@ package shad.stack;
 import org.junit.Before;
 import org.junit.Test;
 
+import static com.googlecode.catchexception.CatchException.verifyException;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -102,6 +103,21 @@ public class DynamicStackTest {
         stack.pop();
 
         assertThat(stack.capacity(), is(2));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void itShouldNotAllowToCreateStackWithNonPositiveCapacity() throws Exception {
+        new DynamicStack<Integer>(0);
+    }
+
+    @Test
+    public void itShouldNotAllowPopOnEmptyStack() throws Exception {
+        verifyException(stack, IllegalArgumentException.class).pop();
+    }
+
+    @Test
+    public void itShouldNotAllowPeekOnEmptyStack() throws Exception {
+        verifyException(stack, IllegalArgumentException.class).peek();
     }
 
 }

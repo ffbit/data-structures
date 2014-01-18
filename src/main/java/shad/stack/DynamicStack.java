@@ -8,6 +8,12 @@ public class DynamicStack<E> {
 
     @SuppressWarnings("unchecked")
     public DynamicStack(int initialCapacity) {
+        if (initialCapacity <= 0) {
+            throw new IllegalArgumentException(
+                    "Dynamic stack initial capacity must be a positive natural number, " +
+                            "but was <" + initialCapacity + ">");
+        }
+
         holder = (E[]) new Object[initialCapacity];
     }
 
@@ -32,6 +38,10 @@ public class DynamicStack<E> {
     }
 
     public E pop() {
+        if (size() == 0) {
+            throw new IllegalArgumentException("Attempt to pop on empty stack");
+        }
+
         E element = holder[--top];
 
         if (capacity() / Math.max(size(), 1) >= 4) {
@@ -42,6 +52,10 @@ public class DynamicStack<E> {
     }
 
     public E peek() {
+        if (size() == 0) {
+            throw new IllegalArgumentException("Attempt to peek on empty stack");
+        }
+
         return holder[top - 1];
     }
 
