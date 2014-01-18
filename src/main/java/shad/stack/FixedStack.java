@@ -4,6 +4,7 @@ public class FixedStack<E> {
     private E[] holder;
     int top;
 
+    @SuppressWarnings("unchecked")
     public FixedStack(int capacity) {
         if (capacity <= 0) {
             throw new IllegalArgumentException(
