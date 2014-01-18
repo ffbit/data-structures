@@ -7,3 +7,6 @@ bin
 *~
 .idea
 *.iml
+.gradle
+build
+out
