@@ -1,5 +1,7 @@
 package shad.stack;
 
+import java.util.NoSuchElementException;
+
 public class ListStack<E> {
     private Node<E> top;
 
@@ -18,6 +20,10 @@ public class ListStack<E> {
     }
 
     public E pop() {
+        if (top == null) {
+            throw new NoSuchElementException("Attempt to peek on empty stack");
+        }
+
         E element = top.value;
         top = top.next;
 
@@ -25,6 +31,10 @@ public class ListStack<E> {
     }
 
     public E peek() {
+        if (top == null) {
+            throw new NoSuchElementException("Attempt to peek on empty stack");
+        }
+
         return top.value;
     }
 
