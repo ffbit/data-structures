@@ -24,4 +24,8 @@ public class ListStack<E> {
         return element;
     }
 
+    public E peek() {
+        return top.value;
+    }
+
 }

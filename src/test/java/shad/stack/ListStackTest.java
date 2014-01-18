@@ -31,4 +31,19 @@ public class ListStackTest {
         assertThat(stack.pop(), is(1));
     }
 
+    @Test
+    public void itShouldPushAndPeekElement() throws Exception {
+        stack.push(1);
+
+        assertThat(stack.peek(), is(1));
+    }
+
+    @Test
+    public void itShouldNotRemoveTopElementOnPeek() throws Exception {
+        stack.push(1);
+        stack.peek();
+
+        assertThat(stack.pop(), is(1));
+    }
+
 }
