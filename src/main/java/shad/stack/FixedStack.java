@@ -20,4 +20,8 @@ public class FixedStack<E> {
         return holder[--top];
     }
 
+    public int size() {
+        return top;
+    }
+
 }

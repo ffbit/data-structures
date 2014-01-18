@@ -34,4 +34,25 @@ public class FixedStackTest {
         assertThat(stack.pop(), is(1));
     }
 
+    @Test
+    public void itShouldIncreaseSize() throws Exception {
+        FixedStack<Integer> stack = new FixedStack<Integer>(1);
+
+        assertThat(stack.size(), is(0));
+
+        stack.push(1);
+        assertThat(stack.size(), is(1));
+    }
+
+    @Test
+    public void itShouldDecreaseSize() throws Exception {
+        FixedStack<Integer> stack = new FixedStack<Integer>(1);
+
+        stack.push(1);
+        assertThat(stack.size(), is(1));
+
+        stack.pop();
+        assertThat(stack.size(), is(0));
+    }
+
 }
