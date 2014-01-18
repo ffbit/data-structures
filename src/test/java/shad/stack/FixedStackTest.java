@@ -2,6 +2,8 @@ package shad.stack;
 
 import org.junit.Test;
 
+import java.util.NoSuchElementException;
+
 import static com.googlecode.catchexception.CatchException.verifyException;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -76,14 +78,14 @@ public class FixedStackTest {
     public void itShouldNotAllowPopOnEmptyStack() throws Exception {
         stack = new FixedStack<Integer>(1);
 
-        verifyException(stack, IllegalArgumentException.class).pop();
+        verifyException(stack, NoSuchElementException.class).pop();
     }
 
     @Test
     public void itShouldNotAllowPeekOnEmptyStack() throws Exception {
         stack = new FixedStack<Integer>(1);
 
-        verifyException(stack, IllegalArgumentException.class).peek();
+        verifyException(stack, NoSuchElementException.class).peek();
     }
 
     @Test
@@ -92,7 +94,7 @@ public class FixedStackTest {
 
         stack.push(1);
 
-        verifyException(stack, IllegalArgumentException.class).push(2);
+        verifyException(stack, NoSuchElementException.class).push(2);
     }
 
 }

@@ -1,6 +1,7 @@
 package shad.stack;
 
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 
 public class DynamicStack<E> {
     private E[] holder;
@@ -39,7 +40,7 @@ public class DynamicStack<E> {
 
     public E pop() {
         if (size() == 0) {
-            throw new IllegalArgumentException("Attempt to pop on empty stack");
+            throw new NoSuchElementException("Attempt to pop on empty stack");
         }
 
         E element = holder[--top];
@@ -53,7 +54,7 @@ public class DynamicStack<E> {
 
     public E peek() {
         if (size() == 0) {
-            throw new IllegalArgumentException("Attempt to peek on empty stack");
+            throw new NoSuchElementException("Attempt to peek on empty stack");
         }
 
         return holder[top - 1];

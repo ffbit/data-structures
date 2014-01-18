@@ -1,5 +1,7 @@
 package shad.stack;
 
+import java.util.NoSuchElementException;
+
 public class FixedStack<E> {
     private E[] holder;
     int top;
@@ -20,7 +22,7 @@ public class FixedStack<E> {
 
     public void push(E element) {
         if (size() == holder.length) {
-            throw new IllegalArgumentException("Attempt to push in full stack");
+            throw new NoSuchElementException("Attempt to push in full stack");
         }
 
         holder[top++] = element;
@@ -28,7 +30,7 @@ public class FixedStack<E> {
 
     public E pop() {
         if (size() == 0) {
-            throw new IllegalArgumentException("Attempt to pop from empty stack");
+            throw new NoSuchElementException("Attempt to pop from empty stack");
         }
 
         return holder[--top];
@@ -40,7 +42,7 @@ public class FixedStack<E> {
 
     public E peek() {
         if (size() == 0) {
-            throw new IllegalArgumentException("Attempt to peek from empty stack");
+            throw new NoSuchElementException("Attempt to peek from empty stack");
         }
 
         return holder[top - 1];
