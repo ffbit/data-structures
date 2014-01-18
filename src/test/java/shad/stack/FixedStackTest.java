@@ -2,6 +2,7 @@ package shad.stack;
 
 import org.junit.Test;
 
+import static com.googlecode.catchexception.CatchException.verifyException;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -53,6 +54,27 @@ public class FixedStackTest {
 
         stack.pop();
         assertThat(stack.size(), is(0));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void itShouldNotAllowToCreateStackWithNonPositiveCapacity() throws Exception {
+        new FixedStack<Integer>(0);
+    }
+
+    @Test
+    public void itShouldNotAllowPopOnEmptyStack() throws Exception {
+        FixedStack<Integer> stack = new FixedStack<Integer>(1);
+
+        verifyException(stack, IllegalArgumentException.class).pop();
+    }
+
+    @Test
+    public void itShouldNotAllowPushInFullStack() throws Exception {
+        FixedStack<Integer> stack = new FixedStack<Integer>(1);
+
+        stack.push(1);
+
+        verifyException(stack, IllegalArgumentException.class).push(2);
     }
 
 }
