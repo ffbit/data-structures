@@ -37,6 +37,10 @@ public class MinStatisticsQueue<E extends Comparable<E>> implements Queue<E> {
     }
 
     public E min() {
+        if (output.isEmpty() && input.isEmpty()) {
+            throw new QueueUnderflowException("An attempt to get min on an empty min statistics queue");
+        }
+
         if (output.isEmpty()) {
             return input.min();
         }

@@ -3,6 +3,7 @@ package shad.queue;
 import org.junit.Before;
 import org.junit.Test;
 
+import static com.googlecode.catchexception.CatchException.verifyException;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -60,6 +61,11 @@ public class MinStatisticsQueueTest {
 
         assertThat(queue.dequeue(), is(2));
         assertThat(queue.min(), is(5));
+    }
+
+    @Test
+    public void itShouldNotAllowMinOnEmptyQueue() throws Exception {
+        verifyException(queue, QueueUnderflowException.class).min();
     }
 
 }
