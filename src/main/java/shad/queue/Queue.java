@@ -6,4 +6,6 @@ public interface Queue<E> {
 
     E dequeue();
 
+    int size();
+
 }
