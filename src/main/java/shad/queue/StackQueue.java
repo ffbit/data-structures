@@ -1,10 +1,11 @@
 package shad.queue;
 
 import shad.stack.FixedStack;
+import shad.stack.Stack;
 
 public class StackQueue<E> implements Queue<E> {
-    private FixedStack<E> input;
-    private FixedStack<E> output;
+    private Stack<E> input;
+    private Stack<E> output;
 
     public StackQueue(int capacity) {
         input = new FixedStack<E>(capacity);
@@ -18,8 +19,8 @@ public class StackQueue<E> implements Queue<E> {
 
     @Override
     public E dequeue() {
-        if (output.size() == 0) {
-            while (input.size() != 0) {
+        if (output.isEmpty()) {
+            while (!input.isEmpty()) {
                 output.push(input.pop());
             }
         }

@@ -27,6 +27,7 @@ public class DynamicStackTest {
     @Test
     public void itShouldCreateEmptyStack() throws Exception {
         assertThat(stack.size(), is(0));
+        assertThat(stack.isEmpty(), is(true));
     }
 
     @Test
@@ -43,6 +44,7 @@ public class DynamicStackTest {
         stack.push(1);
 
         assertThat(stack.size(), is(1));
+        assertThat(stack.isEmpty(), is(false));
     }
 
     @Test

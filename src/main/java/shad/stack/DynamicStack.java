@@ -3,7 +3,7 @@ package shad.stack;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
-public class DynamicStack<E> {
+public class DynamicStack<E> implements Stack<E> {
     private E[] holder;
     private int top;
 
@@ -26,10 +26,12 @@ public class DynamicStack<E> {
         return holder.length;
     }
 
+    @Override
     public int size() {
         return top;
     }
 
+    @Override
     public void push(E element) {
         if (size() == capacity()) {
             holder = Arrays.copyOf(holder, size() * 2);
@@ -38,6 +40,7 @@ public class DynamicStack<E> {
         holder[top++] = element;
     }
 
+    @Override
     public E pop() {
         if (size() == 0) {
             throw new NoSuchElementException("Attempt to pop on empty stack");
@@ -52,6 +55,7 @@ public class DynamicStack<E> {
         return element;
     }
 
+    @Override
     public E peek() {
         if (size() == 0) {
             throw new NoSuchElementException("Attempt to peek on empty stack");
@@ -60,4 +64,8 @@ public class DynamicStack<E> {
         return holder[top - 1];
     }
 
+    @Override
+    public boolean isEmpty() {
+        return size() == 0;
+    }
 }

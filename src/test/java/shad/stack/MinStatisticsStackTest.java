@@ -36,4 +36,27 @@ public class MinStatisticsStackTest {
         assertThat(stack.min(), is(1));
     }
 
+    @Test
+    public void itShouldCreateEmptyStack() throws Exception {
+        assertThat(stack.size(), is(0));
+        assertThat(stack.isEmpty(), is(true));
+    }
+
+    @Test
+    public void itShouldNotDecreaseSizeOnPeek() throws Exception {
+        stack.push(2);
+        stack.peek();
+
+        assertThat(stack.size(), is(1));
+        assertThat(stack.isEmpty(), is(false));
+    }
+
+    @Test
+    public void itShouldDecreaseSizeOnPop() throws Exception {
+        stack.push(2);
+        stack.pop();
+
+        assertThat(stack.size(), is(0));
+    }
+
 }

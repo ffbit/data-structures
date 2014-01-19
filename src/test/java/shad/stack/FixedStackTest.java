@@ -49,6 +49,14 @@ public class FixedStackTest {
     }
 
     @Test
+    public void itShouldCreateEmptyStack() throws Exception {
+        stack = new FixedStack<Integer>(2);
+
+        assertThat(stack.size(), is(0));
+        assertThat(stack.isEmpty(), is(true));
+    }
+
+    @Test
     public void itShouldIncreaseSize() throws Exception {
         stack = new FixedStack<Integer>(1);
 
@@ -56,6 +64,7 @@ public class FixedStackTest {
 
         stack.push(1);
         assertThat(stack.size(), is(1));
+        assertThat(stack.isEmpty(), is(false));
     }
 
     @Test

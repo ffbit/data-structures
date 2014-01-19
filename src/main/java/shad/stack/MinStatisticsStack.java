@@ -1,6 +1,6 @@
 package shad.stack;
 
-public class MinStatisticsStack<E extends Comparable<E>> {
+public class MinStatisticsStack<E extends Comparable<E>> implements Stack<E> {
     private int size;
 
     private ListStack<E> primaryStack;
@@ -11,6 +11,7 @@ public class MinStatisticsStack<E extends Comparable<E>> {
         minStack = new ListStack<E>();
     }
 
+    @Override
     public void push(E element) {
         pushMin(element);
         primaryStack.push(element);
@@ -35,11 +36,27 @@ public class MinStatisticsStack<E extends Comparable<E>> {
         return minStack.peek();
     }
 
+    @Override
     public E pop() {
         minStack.pop();
         size--;
 
         return primaryStack.pop();
+    }
+
+    @Override
+    public E peek() {
+        return null;
+    }
+
+    @Override
+    public int size() {
+        return size;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return size() == 0;
     }
 
 }

@@ -26,6 +26,38 @@ public class ListStackTest {
     }
 
     @Test
+    public void itShouldCreateEmptyStack() throws Exception {
+        assertThat(stack.size(), is(0));
+        assertThat(stack.isEmpty(), is(true));
+    }
+
+    @Test
+    public void itShouldIncreaseSize() throws Exception {
+        assertThat(stack.size(), is(0));
+
+        stack.push(1);
+
+        assertThat(stack.size(), is(1));
+        assertThat(stack.isEmpty(), is(false));
+    }
+
+    @Test
+    public void itShouldNotDecreaseSizeOnPeek() throws Exception {
+        stack.push(2);
+        stack.peek();
+
+        assertThat(stack.size(), is(1));
+    }
+
+    @Test
+    public void itShouldDecreaseSizeOnPop() throws Exception {
+        stack.push(2);
+        stack.pop();
+
+        assertThat(stack.size(), is(0));
+    }
+
+    @Test
     public void itShouldBeFistInputLastOutput() throws Exception {
         stack.push(1);
         stack.push(2);
