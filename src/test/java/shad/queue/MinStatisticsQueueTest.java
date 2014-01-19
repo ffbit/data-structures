@@ -53,13 +53,13 @@ public class MinStatisticsQueueTest {
         assertThat(queue.dequeue(), is(1));
         assertThat(queue.min(), is(0));
 
+        queue.enqueue(5);
+
         assertThat(queue.dequeue(), is(0));
         assertThat(queue.min(), is(2));
 
-        queue.enqueue(-1);
-
-        assertThat(queue.min(), is(-1));
         assertThat(queue.dequeue(), is(2));
+        assertThat(queue.min(), is(5));
     }
 
 }
