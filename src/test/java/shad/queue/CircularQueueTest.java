@@ -7,10 +7,11 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class CircularQueueTest {
+    private Queue<Integer> queue;
 
     @Test
     public void itShouldEnqueueAndDequeue() throws Exception {
-        Queue<Integer> queue = new CircularQueue(1);
+        queue = new CircularQueue(1);
 
         queue.enqueue(1);
 
@@ -19,7 +20,7 @@ public class CircularQueueTest {
 
     @Test
     public void itShouldBeFirstInputFirstOutput() throws Exception {
-        Queue<Integer> queue = new CircularQueue(2);
+        queue = new CircularQueue(2);
 
         queue.enqueue(1);
         queue.enqueue(2);
@@ -30,14 +31,14 @@ public class CircularQueueTest {
 
     @Test
     public void itShouldCreateEmptyQueue() throws Exception {
-        Queue<Integer> queue = new CircularQueue<Integer>(1);
+        queue = new CircularQueue<Integer>(1);
 
         assertThat(queue.size(), is(0));
     }
 
     @Test
     public void itShouldIncreaseSize() throws Exception {
-        Queue<Integer> queue = new CircularQueue<Integer>(1);
+        queue = new CircularQueue<Integer>(1);
 
         assertThat(queue.size(), is(0));
 
@@ -48,7 +49,7 @@ public class CircularQueueTest {
 
     @Test
     public void itShouldDecreaseSize() throws Exception {
-        Queue<Integer> queue = new CircularQueue<Integer>(1);
+        queue = new CircularQueue<Integer>(1);
 
         queue.enqueue(2);
         queue.dequeue();
@@ -59,7 +60,7 @@ public class CircularQueueTest {
 
     @Test
     public void itShouldBeCircular() throws Exception {
-        Queue<Integer> queue = new CircularQueue<Integer>(2);
+        queue = new CircularQueue<Integer>(2);
 
         queue.enqueue(1);
         assertThat(queue.dequeue(), is(1));
@@ -73,14 +74,14 @@ public class CircularQueueTest {
 
     @Test
     public void itShouldNotAllowUnderflow() throws Exception {
-        Queue<Integer> queue = new CircularQueue(1);
+        queue = new CircularQueue(1);
 
         verifyException(queue, QueueUnderflowException.class).dequeue();
     }
 
     @Test
     public void itShouldNotAllowOverflow() throws Exception {
-        Queue<Integer> queue = new CircularQueue(1);
+        queue = new CircularQueue(1);
 
         queue.enqueue(1);
 
