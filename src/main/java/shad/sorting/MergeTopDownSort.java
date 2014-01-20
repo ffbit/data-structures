@@ -2,7 +2,7 @@ package shad.sorting;
 
 import java.util.Arrays;
 
-public class MergeSort<E extends Comparable<E>> implements Sorter<E> {
+public class MergeTopDownSort<E extends Comparable<E>> implements Sorter<E> {
 
     @Override
     public E[] sort(E[] source) {
