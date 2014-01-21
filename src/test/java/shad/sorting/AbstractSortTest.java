@@ -29,6 +29,7 @@ public abstract class AbstractSortTest {
                 {new Integer[]{2, 1}, new Integer[]{1, 2}},
                 {new Integer[]{2, 1, 1, 0}, new Integer[]{0, 1, 1, 2}},
                 {new Integer[]{1, 2, 3}, new Integer[]{1, 2, 3}},
+                {new Integer[]{4, 5, 3, 2, 6, 1, 7, 0, 8}, new Integer[]{0, 1, 2, 3, 4, 5, 6, 7, 8}}
         });
     }
 
