@@ -17,7 +17,7 @@ public class MergeBottomUpSort<E extends Comparable<E>> implements Sorter<E> {
 
         for (int k = 1; k < n; k *= 2) {
             for (int i = 0; i < n; i += 2 * k) {
-                merge(source, target, i, i + k, Math.min(i + 2 * k, n));
+                merge(source, target, i, Math.min(i + k, n), Math.min(i + 2 * k, n));
             }
 
             source = Arrays.copyOf(target, n);
