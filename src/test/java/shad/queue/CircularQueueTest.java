@@ -6,6 +6,7 @@ import static com.googlecode.catchexception.CatchException.verifyException;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+@SuppressWarnings("unchecked")
 public class CircularQueueTest {
     private Queue<Integer> queue;
 
