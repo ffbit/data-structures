@@ -8,4 +8,6 @@ public interface Heap<E extends Comparable<E>> {
 
     E getMin();
 
+    E remove();
+
 }
